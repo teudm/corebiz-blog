@@ -5,10 +5,10 @@ import { type App, type FnContext } from "@deco/deco";
 export type State = any;
 export type AppContext = FnContext<State, Manifest>;
 /**
- * @title Corebiz Blog
+ * @title Deco Blog
  * @description Manage your posts.
- * @category Corebiz
- * @logo https://cdn.freebiesupply.com/images/large/2x/blogger-logo-transparent.png
+ * @category Tool
+ * @logo https://raw.githubusercontent.com/deco-cx/apps/main/weather/logo.png
  */
 export default function App(state: State): App<Manifest, State> {
   return { manifest, state };
@@ -18,7 +18,7 @@ export const preview = () => {
     Component: PreviewContainer,
     props: {
       name: "Deco Blog",
-      owner: "deco",
+      owner: "deco.cx",
       description: "Manage your posts, categories and authors.",
       logo:
         "https://raw.githubusercontent.com/deco-cx/apps/main/weather/logo.png",
