@@ -5,10 +5,10 @@ import { type App, type FnContext } from "@deco/deco";
 export type State = any;
 export type AppContext = FnContext<State, Manifest>;
 /**
- * @title Deco Blog
+ * @title Corebiz Blog
  * @description Manage your posts.
- * @category Tool
- * @logo https://raw.githubusercontent.com/deco-cx/apps/main/weather/logo.png
+ * @category Corebiz
+ * @logo https://raw.githubusercontent.com/Breton-cx/apps/main/weather/logo.png
  */
 export default function App(state: State): App<Manifest, State> {
   return { manifest, state };
@@ -18,7 +18,7 @@ export const preview = () => {
     Component: PreviewContainer,
     props: {
       name: "Deco Blog",
-      owner: "deco.cx",
+      owner: "deco",
       description: "Manage your posts, categories and authors.",
       logo:
         "https://raw.githubusercontent.com/deco-cx/apps/main/weather/logo.png",
