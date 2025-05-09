@@ -8,7 +8,7 @@ export type AppContext = FnContext<State, Manifest>;
  * @title Corebiz Blog
  * @description Manage your posts.
  * @category Corebiz
- * @logo https://raw.githubusercontent.com/Breton-cx/apps/main/weather/logo.png
+ * @logo https://cdn.freebiesupply.com/images/large/2x/blogger-logo-transparent.png
  */
 export default function App(state: State): App<Manifest, State> {
   return { manifest, state };

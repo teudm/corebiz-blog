@@ -1,6 +1,6 @@
 import { Picture, Source } from "apps/website/components/Picture.tsx";
 import { BlogPost } from "./types.ts";
-import { clx } from "../../../sdk/clx.ts";
+import { clx } from "../utils/clx.ts";
 
 export interface Props {
   title?: string;
