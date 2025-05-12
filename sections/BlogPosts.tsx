@@ -43,7 +43,7 @@ function Container({ children }: { children: ComponentChildren }) {
 function Skeleton({ label = "Ver matéria" }: { label?: string }) {
   return (
     <div class="flex flex-col gap-4">
-      <div class="skeleton" style={{ width: 384, height: 400 }}></div>
+      <div class="skeleton w-full " style={{ aspectRatio: "384/400" }}></div>
       <div class="skeleton h-4 w-full"></div>
       <div class="skeleton h-6 w-full"></div>
       <button disabled class="btn btn-ghost text-button uppercase pl-0 w-fit">

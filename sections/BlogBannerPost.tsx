@@ -56,7 +56,7 @@ export default function BlogBannerPost({ title = "Blog Breton", post, ctaLabel =
           {postTitle}
         </span>
         <a
-          class="btn btn-neutral btn-outline uppercase text-button w-fit px-[23px] font-medium"
+          class="btn uppercase text-button w-fit px-[23px] font-medium"
           href={`/blog/${slug}`}
         >
           {ctaLabel}
