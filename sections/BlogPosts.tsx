@@ -4,6 +4,7 @@ import { ComponentChildren, Fragment } from "preact";
 import { BlogPost } from "./types.ts";
 import { useId } from "preact/hooks";
 import { useSection as useSection } from "@deco/deco/hooks";
+import { useLanguage } from "../hooks/useLanguage.ts";
 export interface CTA {
   text?: string;
 }
@@ -70,6 +71,7 @@ export default function BlogPosts({
     },
   });
   const ContainerComponent = page === 0 ? Container : Fragment;
+  const lang = useLanguage();
 
   return (
     <ContainerComponent>
@@ -91,7 +93,7 @@ export default function BlogPosts({
                 <span>
                   {post.date
                     ? new Date(`${post.date}T12:00:00`).toLocaleDateString(
-                        "pt-BR",
+                        lang,
                         {
                           month: "long",
                           day: "numeric",

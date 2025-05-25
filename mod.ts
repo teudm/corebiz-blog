@@ -1,8 +1,15 @@
 import manifest, { Manifest } from "./manifest.gen.ts";
 import { PreviewContainer } from "./utils/preview.tsx";
 import { type App, type FnContext } from "@deco/deco";
-// deno-lint-ignore no-explicit-any
-export type State = any;
+
+export type Language = "pt-BR" | "en-US" | "es-ES";
+
+export type State = {
+  language: Language;
+};
+
+export let _lang: Language = "pt-BR";
+
 export type AppContext = FnContext<State, Manifest>;
 /**
  * @title Corebiz Blog
@@ -11,6 +18,7 @@ export type AppContext = FnContext<State, Manifest>;
  * @logo https://raw.githubusercontent.com/Breton-cx/apps/main/weather/logo.png
  */
 export default function App(state: State): App<Manifest, State> {
+  _lang = state.language || "pt-BR";
   return { manifest, state };
 }
 export const preview = () => {
@@ -20,8 +28,7 @@ export const preview = () => {
       name: "Deco Blog",
       owner: "deco",
       description: "Manage your posts, categories and authors.",
-      logo:
-        "https://raw.githubusercontent.com/deco-cx/apps/main/weather/logo.png",
+      logo: "https://raw.githubusercontent.com/deco-cx/apps/main/weather/logo.png",
       images: [],
       tabs: [],
     },

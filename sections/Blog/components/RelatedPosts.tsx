@@ -1,6 +1,7 @@
 import { type BlogPost } from "../../types.ts";
 import { AppContext } from "../../../mod.ts";
 import Image from "apps/website/components/Image.tsx";
+import { useLanguage } from "../../../hooks/useLanguage.ts";
 
 export interface Props {
   /** @title Subtítulo */
@@ -28,6 +29,8 @@ export default function RelatedPostsSection(
 
   if (!relatedPosts) return null;
 
+  const lang = useLanguage();
+
   return (
     <div class="py-8 md:container overflow-hidden">
       <div class="max-md:container md:mb-10 mb-8">
@@ -51,7 +54,7 @@ export default function RelatedPostsSection(
               <div class="flex gap-2 text-caption uppercase max-md:justify-between max-md:2-full">
                 <span>
                   {post.date
-                    ? new Date(post.date).toLocaleDateString("pt-BR", {
+                    ? new Date(post.date).toLocaleDateString(lang, {
                         month: "long",
                         day: "numeric",
                         year: "numeric",

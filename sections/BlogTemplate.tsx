@@ -2,6 +2,8 @@ import { useId } from "preact/hooks";
 import { BlogPost } from "./types.ts";
 import { useSection, useScript } from "@deco/deco/hooks";
 import Image from "apps/website/components/Image.tsx";
+import { useLanguage } from "../hooks/useLanguage.ts";
+import constants from "../constants/translate.ts";
 
 export interface Props {
   post: BlogPost | null;
@@ -14,8 +16,10 @@ export default function Template({ post }: Props) {
 
   const { image, title, date, authors, content = [] } = post;
 
+  const lang = useLanguage();
+
   const raw = new Date(`${date}T12:00:00`);
-  const formattedDate = new Date(raw).toLocaleDateString("pt-BR", {
+  const formattedDate = new Date(raw).toLocaleDateString(lang, {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -43,10 +47,10 @@ export default function Template({ post }: Props) {
           })}
         >
           <img
-            alt="Voltar"
+            alt={constants[lang]["back-button"]}
             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1IDE4TDkgMTJMMTUgNiIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo="
           />
-          Voltar
+          {constants[lang]["back-button"]}
         </button>
         <p class="w-full text-center text-[10px] not-italic font-normal leading-4 tracking-[2.4px] uppercase mb-2">
           {formattedDate?.toUpperCase()} - {authors[0]?.name}
