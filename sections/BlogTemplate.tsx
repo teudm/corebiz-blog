@@ -55,7 +55,7 @@ export default function Template({ post }: Props) {
         <p class="w-full text-center text-[10px] not-italic font-normal leading-4 tracking-[2.4px] uppercase mb-2">
           {formattedDate?.toUpperCase()} - {authors[0]?.name}
         </p>
-        <h1 class="w-full max-w-[800px] text-[22px] text-center font-semibold leading-8 tracking-[1.76px] uppercase mx-auto my-0 px-4">
+        <h1 class="w-full max-w-[800px] text-[22px] text-center font-semibold leading-8 tracking-[1.76px] uppercase mx-auto my-0 px-4 text-black">
           {title}
         </h1>
 
