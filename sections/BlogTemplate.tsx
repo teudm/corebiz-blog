@@ -43,7 +43,14 @@ export default function Template({ post }: Props) {
           class="hidden md:flex btn btn-ghost no-animation text-[11px] not-italic font-medium leading-6 tracking-[2.64px] uppercase"
           hx-on:click={useScript(() => {
             event?.stopPropagation();
-            window.history.back();
+            const hostname = globalThis.window.location.hostname
+            const lastUrl = document.referrer;
+            if (lastUrl && new URL(lastUrl).hostname === hostname) {
+              globalThis.window.history.back();
+            }
+            else {
+              globalThis.window.location.href = "/"
+            }
           })}
         >
           <img
