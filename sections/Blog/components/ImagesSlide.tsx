@@ -1,4 +1,3 @@
-import { useId } from "preact/hooks";
 import { type ImageWidget } from "apps/admin/widgets.ts";
 import { clx } from "../../../utils/clx.ts";
 import Slider from "../../../utils/Slider.tsx";
@@ -23,7 +22,7 @@ export default function ImagesSlide({ images }: ImageSlideProps) {
 
   if (!sliderImages || sliderImages.length === 0) return null;
 
-  const id = useId();
+  const id = `slider-${Math.random().toString(36).substring(2, 11)}`;
 
   return (
     <>
