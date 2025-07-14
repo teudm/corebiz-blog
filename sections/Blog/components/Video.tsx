@@ -1,4 +1,4 @@
-import { VideoWidget as Video } from "apps/admin/widgets.ts";
+import { VideoWidget } from "apps/admin/widgets.ts";
 import { useScript, useDevice } from "@deco/deco/hooks";
 import Icon from "../../../utils/Icon.tsx";
 import { useId } from "preact/hooks";
@@ -19,7 +19,7 @@ export interface VideoProps {
 }
 
 interface CustomVideo {
-  video: Video;
+  video: VideoWidget;
   width: number;
   height: number;
 }
@@ -27,7 +27,7 @@ interface CustomVideo {
 const handleVideo = (id: string) => {
   const video: HTMLVideoElement | null = document.getElementById(
     `custom-video-${id}`
-  );
+  ) as HTMLVideoElement | null;
   const playButton = document.getElementById(`play-${id}`);
   const muteButton = document.getElementById(`mute-${id}`);
   const resetButton = document.getElementById(`reset-${id}`);
@@ -42,6 +42,7 @@ const handleVideo = (id: string) => {
   resetButton.addEventListener("click", () => {
     video.currentTime = 0;
   });
+  video.play();
 };
 
 function calculateAspectRatio(video: CustomVideo) {
@@ -52,7 +53,7 @@ function calculateAspectRatio(video: CustomVideo) {
 export default function Video({
   videoDesktop,
   videoMobile,
-  autoplay,
+  autoplay = true,
   initialBlock,
 }: VideoProps) {
   if (!videoDesktop || !videoMobile) return null;
@@ -78,7 +79,7 @@ export default function Video({
           initialBlock ? "max-md:-mt-[80px] md:-mt-[100px]" : ""
         } mb-4 lg:px-4`}
         style={{ aspectRatio: `${aspectRatio}` }}
-        id={initialBlock ? "main-banner" : null}
+        id={initialBlock ? "main-banner" : ""}
       >
         <video
           id={`custom-video-${id}`}
