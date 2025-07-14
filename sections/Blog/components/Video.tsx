@@ -24,7 +24,7 @@ interface CustomVideo {
   height: number;
 }
 
-const handleVideo = (id: string) => {
+const handleVideo = (id: string, autoplay?: boolean) => {
   const video: HTMLVideoElement | null = document.getElementById(
     `custom-video-${id}`
   ) as HTMLVideoElement | null;
@@ -42,7 +42,7 @@ const handleVideo = (id: string) => {
   resetButton.addEventListener("click", () => {
     video.currentTime = 0;
   });
-  video.play();
+  autoplay && video.play();
 };
 
 function calculateAspectRatio(video: CustomVideo) {
@@ -142,7 +142,7 @@ export default function Video({
       </section>
       <script
         type="module"
-        dangerouslySetInnerHTML={{ __html: useScript(handleVideo, id) }}
+        dangerouslySetInnerHTML={{ __html: useScript(handleVideo, id, autoplay) }}
       />
     </>
   );
